@@ -1,0 +1,16 @@
+.Video {
+  width: 460px;
+  padding: 10px 10px 1px;
+  margin: 10px;
+
+  background: #000000;
+}
+
+.Video iframe {
+  display: block;
+  width: 440px;
+  height: 240px;
+  margin: 0 auto;
+
+  border: none;
+}
