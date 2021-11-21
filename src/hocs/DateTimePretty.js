@@ -3,7 +3,7 @@ import getTimeDifference from '../functions/getTimeDifference';
 import formatTimeDifference from '../functions/formatTimeDifference';
 
 export default function DateTimePretty(WrappedComponent) {
-  return class extends Component {
+  class DateTimePretty extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -33,4 +33,11 @@ export default function DateTimePretty(WrappedComponent) {
       return <WrappedComponent date={this.state.timeDifference}/>;
     }
   }
+
+  const wrappedComponentName = WrappedComponent.displayName
+    || WrappedComponent.name
+    || 'Component';
+
+  DateTimePretty.displayName = `DateTimePretty(${wrappedComponentName})`;
+  return DateTimePretty;
 }
