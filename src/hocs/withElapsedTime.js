@@ -2,8 +2,8 @@ import { Component } from 'react';
 import getTimeDifference from '../functions/getTimeDifference';
 import formatTimeDifference from '../functions/formatTimeDifference';
 
-export default function DateTimePretty(WrappedComponent) {
-  class DateTimePretty extends Component {
+export default function withElapsedTime(WrappedComponent) {
+  class withElapsedTime extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -25,12 +25,12 @@ export default function DateTimePretty(WrappedComponent) {
 
     updateState() {
       this.setState({
-        timeDifference: formatTimeDifference(getTimeDifference(this.props.date))
+        timeDifference: formatTimeDifference(getTimeDifference(this.props.date)),
       });
     }
 
     render() {
-      return <WrappedComponent date={this.state.timeDifference}/>;
+      return <WrappedComponent {...this.props} date={this.state.timeDifference} />;
     }
   }
 
@@ -38,6 +38,6 @@ export default function DateTimePretty(WrappedComponent) {
     || WrappedComponent.name
     || 'Component';
 
-  DateTimePretty.displayName = `DateTimePretty(${wrappedComponentName})`;
-  return DateTimePretty;
+  withElapsedTime.displayName = `DateTimePretty(${wrappedComponentName})`;
+  return withElapsedTime;
 }

@@ -1,8 +1,5 @@
 import './Video.css';
 import DateTime from './DateTime/DateTime';
-import DateTimePretty from '../../../hocs/DateTimePretty';
-
-const ConvertedDateTime = DateTimePretty(DateTime);
 
 export default function Video(props) {
   return (
@@ -14,7 +11,7 @@ export default function Video(props) {
         allowFullScreen
         title={props.title}
       />
-      <ConvertedDateTime date={props.date} />
+      <DateTime date={props.date} />
     </div>
   );
 }
